@@ -2,25 +2,30 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../Hooks/useCart";
 
 const Navbar = () => {
-    const {user,logOut} = useContext(AuthContext)
-    const handleLogOut=()=>{
+    const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart()
+    const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(error=>{
-            console.log(error);
-        })
+            .then()
+            .catch(error => {
+                console.log(error);
+            })
     }
-    const navOptions =<>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='menu'>Menu</Link></li>
-    <li><Link to='/order/salad'>Order Food</Link></li>
-    <li><Link to='/secret'>Secret</Link></li>
-    
-    {
-        user ? <> <span>{user?.displayName}</span> <button className="btn btn-ghost" onClick={handleLogOut}>Log Out</button></> : <><li><Link to='/login'>Login</Link></li></>
-    }
+    const navOptions = <>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/menu'>Menu</Link></li>
+        <li><Link to='/order/salad'>Order Food</Link></li>
+        <li><Link to='/secret'>Secret</Link></li>
+        <li><Link to='/dashboard/cart'><button className="btn btn-ghost">
+        <FaShoppingCart />
+            <div className="badge badge-secondary">+{cart.length}</div>
+        </button></Link></li>
+
+
     </>
     return (
         <>
@@ -51,11 +56,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                       {navOptions}
+                        {navOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <><button className="btn btn-ghost" onClick={handleLogOut}>Log Out</button>
+                            <span className="text-xl hover:text-yellow-400 mr-5">{user?.displayName}</span> </> : <><li><Link to='/login'>Login</Link></li></>
+                    }
                 </div>
             </div>
         </>
