@@ -4,9 +4,11 @@ import { IoMdMenu } from "react-icons/io";
 import { MdEmail, MdGroups, MdOutlineRateReview, MdOutlineShoppingBag, MdOutlineWorkHistory } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin()
     return (
         <div className="flex">
             {/* side bar */}
