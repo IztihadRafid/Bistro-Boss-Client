@@ -5,10 +5,12 @@ import { MdEmail, MdGroups, MdOutlineRateReview, MdOutlineShoppingBag, MdOutline
 import { SlCalender } from "react-icons/sl";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
+import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
     // const isAdmin = true;
     const [isAdmin] = useAdmin()
+    const [cart] = useCart()
     return (
         <div className="flex">
             {/* side bar */}
@@ -42,7 +44,7 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard/reservation"><SlCalender />Reservation</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart>My Cart</NavLink>
+                                    <NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart>My Cart ({cart.length})</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/review"><MdOutlineRateReview />Add Review</NavLink>
