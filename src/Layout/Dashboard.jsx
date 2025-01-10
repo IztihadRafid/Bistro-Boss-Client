@@ -30,9 +30,7 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/manageItems"><FaListUl />Manage Items</NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/dashboard/bookings"><FaBook />Manage Bookings</NavLink>
-                            </li>
+                           
                             <li>
                                 <NavLink to="/dashboard/users"><MdGroups />All Users</NavLink>
                             </li>
@@ -64,9 +62,7 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/order/salad"><IoMdMenu />Menu</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/"><MdOutlineShoppingBag />Shop</NavLink>
-                    </li>
+                    
                     <li>
                         <NavLink to="/"><MdEmail />Contact</NavLink>
                     </li>

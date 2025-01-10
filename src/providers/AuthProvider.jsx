@@ -59,14 +59,16 @@ const AuthProvider = ({ children }) => {
                         // console.log(data);
                         if(res.data.token){
                             localStorage.setItem('access-token', res.data.token)
+                            setLoading(false);
                         }
                     })
                 }
                 else{
                     //remove token (if token is stored in the client/local storage)
                     localStorage.removeItem('access-token')
+                    setLoading(false);
                 }
-                setLoading(false);
+                
             });
             return ()=>{
                 return unsubscribe();
